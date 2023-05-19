@@ -1,3 +1,9 @@
+/*
+Имея список студентов (Student), найти и вывести имена всех студентов, чей средний бал по всем предметам (Subject) выше заданного
+Имея список студентов (Student), вывести фамилии студентов, старше заданного возраста.
+Имея список студентов (Student), вывести фамилии студентов, начинающиеся на заданную букву. Результат должен быть отсортирован по возрастанию по имени, и по убыванию по возрасту студента.
+*/
+
 package main;
 
 import java.util.*;
@@ -10,7 +16,7 @@ public class Main {
         students.add(new Student("Аркадий", "Панин", 25, setGrades(5,4,4)));
         students.add(new Student("Борис", "Бритва", 1, setGrades(3,3,4)));
         students.add(new Student("Сергей", "Иванов", 18, setGrades(4,3,3)));
-        students.add(new Student("Сергей", "Блинов", -21, setGrades(5,5,5)));
+        students.add(new Student("Сергей", "Блинов", 21, setGrades(5,5,5)));
 
 
         System.out.println("Студенты со средним баллом выше 4: ");
@@ -21,8 +27,9 @@ public class Main {
         System.out.println(getStudentOlderThanGivenAge(students, 18));
 
         System.out.println("==================================");
+        System.out.println("Вывод отсортированного по возрастанию по имени, и по убыванию по возрасту списка студентов, чья фамилия начинается с буквы Б");
         Collections.sort(students,new StudentSort());
-        System.out.println(students);
+        System.out.println(getStudentsWithLastNameStartingWith(students,'Б'));
         }
 
     public static List<Student> studentsAverageGrade(List<Student> students, int averageGrade) {
@@ -54,6 +61,14 @@ public class Main {
         return grades;
     }
 
-    public sta
+    public static List<Student> getStudentsWithLastNameStartingWith (List<Student> students, char firstLetter) {
+        List<Student> filteredStudents = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getLastName().startsWith(String.valueOf(firstLetter))) {
+                filteredStudents.add(student);
+            }
+        }
+        return filteredStudents;
+    }
 
 }
