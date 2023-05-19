@@ -1,22 +1,19 @@
 package main;
 
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class Student {
     private String firstName;
     private String lastName;
     private int age;
-    private int mathGrade;
-    private int biologyGrade;
-    private int sociologyGrade;
+    private HashMap<Subject, Integer> grades;
 
-    public Student(String firstName, String lastName, int age, int mathGrade, int biologyGrade, int sociologyGrade) {
+    public Student(String firstName, String lastName, int age, HashMap<Subject, Integer> grades) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.mathGrade = mathGrade;
-        this.biologyGrade = biologyGrade;
-        this.sociologyGrade = sociologyGrade;
+        this.grades = grades;
     }
 
     public String getFirstName() {
@@ -39,8 +36,16 @@ public class Student {
         return age;
     }
 
-    public int getAverageGrade() {
-        return (mathGrade + biologyGrade + sociologyGrade) / 3;
+    public String toString() {
+        return firstName + " " + lastName + " " + age;
+    }
+
+    public boolean getAverageGrade(double averageGrade) {
+        double sum = 0;
+        for (int value: grades.values()) {
+            sum += value;
+        }
+        return (sum / grades.size()) > averageGrade;
     }
 
     static class CompareStudentName implements Comparator<Student> {
@@ -50,7 +55,7 @@ public class Student {
         }
     }
 
-    static class CompareStudentAge implements Comparator <Student> {
+    static class CompareStudentAge implements Comparator<Student> {
         @Override
         public int compare (Student o1, Student o2) {
             return Integer.compare(o1.getAge(), o2.getAge());
