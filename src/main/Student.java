@@ -47,18 +47,4 @@ public class Student {
         }
         return (sum / grades.size()) > averageGrade;
     }
-
-    static class CompareStudentName implements Comparator<Student> {
-        @Override
-        public int compare(Student o1, Student o2) {
-            return o1.getFirstName().compareTo(o2.getFirstName());
-        }
-    }
-
-    static class CompareStudentAge implements Comparator<Student> {
-        @Override
-        public int compare (Student o1, Student o2) {
-            return Integer.compare(o1.getAge(), o2.getAge());
-        }
-    }
 }

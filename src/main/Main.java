@@ -18,7 +18,6 @@ public class Main {
         students.add(new Student("Сергей", "Иванов", 18, setGrades(4,3,3)));
         students.add(new Student("Сергей", "Блинов", 21, setGrades(5,5,5)));
 
-
         System.out.println("Студенты со средним баллом выше 4: ");
         System.out.println(studentsAverageGrade(students, 4));
 
@@ -50,7 +49,6 @@ public class Main {
             }
         }
         return studentsOlderThanGivenAge;
-
     }
 
     public static HashMap<Subject, Integer> setGrades(int biologyGrade, int mathGrade, int sociologyGrade) {
